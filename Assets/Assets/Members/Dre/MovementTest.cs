@@ -8,11 +8,19 @@ public class MovementTest: MonoBehaviour {
 	//private bool ypressed = false;
 	[SerializeField]private bool inAir = false;
 	[SerializeField]private bool doubleJump = false;
+	public enum CameraPositoins
+	{
+		backRight,
+		sideRight
+	}
+	public CameraPositoins currentCamPositon;
 
 	public float jumpSpeed;
 	public float movementSpeed;
 
 	public float height;
+
+	private Vector3 velocity;
 
 	public Rigidbody rb;
 	public GameObject Target;
@@ -32,7 +40,7 @@ public class MovementTest: MonoBehaviour {
 //**********************************
 //CLOSE RANGE
 		//**********************************
-		if(Input.GetAxis("Horizontal") > 0 && !inAir && !doubleJump && inCombat)
+		/*if(Input.GetAxis("Horizontal") > 0 && !inAir && !doubleJump && inCombat)
 		{
 			transform.localPosition += movementSpeed*transform.forward*Time.deltaTime;
 		}
@@ -47,32 +55,33 @@ public class MovementTest: MonoBehaviour {
 		if(Input.GetAxis("Vertical") < 0 && !inAir && !doubleJump && inCombat)
 		{
 			transform.localPosition += movementSpeed*transform.right*Time.deltaTime;
-		}
-		if(Input.GetButtonDown("Jump") && inCombat)
+		}*/
+		/*if(Input.GetButtonDown("Jump") && inCombat)
 		{
 			if(!inAir)
 			{ 
 				inAir = true;
 				rb.AddForce(jumpSpeed*Vector3.up);
-				rb.AddForce(jumpSpeed*-Vector3.forward*2);
+				rb.AddForce(jumpSpeed*-Vector3.forward);
 			}		
-		}
+		}*/
+
 //**********************************
 //LONG RANGE
 //**********************************
-		if(Input.GetAxis("Horizontal") > 0 && !inAir && !doubleJump && !inCombat)
+		if(Input.GetAxis("Horizontal") > 0 && !inAir && !doubleJump)
 		{
 			transform.localPosition += movementSpeed*transform.right*Time.deltaTime;
 		}
-		if(Input.GetAxis("Horizontal") < 0 && !inAir && !doubleJump && !inCombat)
+		if(Input.GetAxis("Horizontal") < 0 && !inAir && !doubleJump)
 		{
 			transform.localPosition -= movementSpeed*transform.right*Time.deltaTime;
 		}
-		if(Input.GetAxis("Vertical") > 0 && !inAir && !doubleJump && !inCombat)
+		if(Input.GetAxis("Vertical") > 0 && !inAir && !doubleJump)
 		{			
 			transform.localPosition += movementSpeed*transform.forward*Time.deltaTime;
 		}
-		if(Input.GetAxis("Vertical") < 0 && !inAir && !doubleJump  && !inCombat)
+		if(Input.GetAxis("Vertical") < 0 && !inAir && !doubleJump)
 		{
 			transform.localPosition -= movementSpeed*transform.forward*Time.deltaTime;
 		}
@@ -94,6 +103,15 @@ public class MovementTest: MonoBehaviour {
 			if(Input.GetAxis("Vertical") < 0) rb.AddForce(jumpSpeed*transform.forward*-.5f);
 		}
 		transform.LookAt (new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.z));
+		switch (currentCamPositon)
+		{
+		case CameraPositoins.backRight:
+			cam.transform.position = Vector3.SmoothDamp(cam.transform.position,campos[0].position, ref velocity, .5f);
+			break;
+		case CameraPositoins.sideRight:
+			cam.transform.position = Vector3.SmoothDamp(cam.transform.position,campos[1].position, ref velocity, .5f);
+			break;
+		}
 	}
 	void OnTriggerEnter(Collider col){
 		switch(col.gameObject.tag)
@@ -103,7 +121,7 @@ public class MovementTest: MonoBehaviour {
 			doubleJump = false;
 			break;
 		case "Player":
-			cam.transform.position = campos[1].position;
+			currentCamPositon = CameraPositoins.sideRight;
 			if(!inCombat)
 			{
 				inCombat = true;
@@ -125,7 +143,7 @@ public class MovementTest: MonoBehaviour {
 			else
 			{
 				inCombat = false;
-				cam.transform.position = campos[0].position;
+				currentCamPositon = CameraPositoins.backRight;
 			}
 			break;
 		}

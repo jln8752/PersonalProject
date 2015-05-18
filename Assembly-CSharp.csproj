@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{B2B58FB2-4462-6B0C-A872-40DD957E5FE0}</ProjectGuid>
+	<ProjectGuid>{EECF6B15-4990-DDCC-7010-F7236A5DC1D1}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -48,12 +48,179 @@
   <ItemGroup>
      <Compile Include="Assets\Assets\Members\Dre\CameraTargetingSystem.cs" />
      <Compile Include="Assets\Assets\Members\Dre\MovementTest.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Demo\MyGui.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Demo\MyGuiV2.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Balls\AddMaterialOnHit.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Balls\AnimatorBehaviour.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Balls\LazyLoad.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Balls\ProjectileCollisionBehaviour.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Balls\SetRandomStartPoint.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Buffs\ShieldCollisionBehaviour.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Buffs\WaterUvAnimation.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Buffs\WaterWaveUvAnimation.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Objects\MoveOnGround.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Shots\LineRendererBehaviour.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Waves\ClothGridCollisionBehaviour.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Waves\InstanceMaterial.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\Billboard.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\CollisionActiveBehaviour.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\DeadTime.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\EffectSettings.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\FadeInOutLight.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\FadeInOutParticles.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\FadeInOutScale.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\FadeInOutShaderColor.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\FadeInOutShaderFloat.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\FadeInOutStatus.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\FixSlowDistortionOnMobile.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\InvokeInterval.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\OnStartSendCollision.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\QueueUvAnimation.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\RandomRotate.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\RandomRotateOnStart.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\SetPositionOnHit.cs" />
+     <Compile Include="Assets\Realistic Effects Pack\Scripts\Share\UVTextureAnimator.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\IO\OtherIOHelper.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\IO\WebPlayerIOHelper.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\IO\WindowsAppStoreIOHelper.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\OpenInExplorer\IOpen.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\OpenInExplorer\LinuxOpen.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\OpenInExplorer\OSXOpen.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\OpenInExplorer\OpenFactory.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\OpenInExplorer\WinOpen.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\Reflection\OtherReflectionHelper.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\Reflection\WindowsAppStoreReflectionHelper.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\RuntimeProcessRunner.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\UnityEditor\EditorUnityEditorHelper.cs" />
+     <Compile Include="Assets\WellFired\shared\Uncompiled\Runtime\Platform Specific\UnityEditor\RuntimeUnityEditorHelper.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Example Scenes\04 Intermediate Examples\Scripts\MouseLook.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Example Scenes\ExampleSceneScripts\AlterPlaybackForASequence.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Example Scenes\ExampleSceneScripts\BasicCharacterControllerGUI.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Example Scenes\ExampleSceneScripts\BasicCharacterControls.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Quick Start Prefabs\Scripts\AmbientLightAdjuster.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Quick Start Prefabs\Scripts\AutoPlaySequence.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Quick Start Prefabs\Scripts\SequenceTrigger.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation Mecanim\Animator\USSetAnimatorBool.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation Mecanim\Animator\USSetAnimatorFloat.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation Mecanim\Animator\USSetAnimatorInteger.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation Mecanim\Animator\USSetAnimatorLayerWeight.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation Mecanim\Animator\USSetAnimatorPlaybackSpeed.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation Mecanim\Animator\USToggleAnimatorApplyRootMotion.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation Mecanim\Animator\USToggleAnimatorStabalizeFeet.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation\USBlendAnimEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation\USBlendAnimNoScrub.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation\USPlayAdvancedAnimEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Animation\USPlayAnimEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Application\USLoadLevelAdditiveEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Application\USLoadLevelEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Attachment\USAttachToParentEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Audio\USFadeAudioEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Audio\USPauseResumeAudioEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Audio\USPlayAudioEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Audio\USStopAudioEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Camera\USCameraDissolveTransition.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Camera\USCameraSetCullingMask.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Debug\USMessageEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Fullscreen\USDisplayImageEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Fullscreen\USFadeScreenEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Fullscreen\USPrintTextEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Light\USSetAmbientLightEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Object\USEnableComponentEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Object\USEnableObjectEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Particle System\USParticleEmitterStartEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Particle System\USParticleEmitterStopEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Physics\USApplyForceEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Physics\USSleepRigidBody.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Recording\USStartRecordingEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Recording\USStopRecordingEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Render\USChangeColor.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Render\USChangeTexture.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Render\USMeshRenderDisable.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Sequence\USPauseSequenceEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Sequence\USPlaySequenceEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Sequence\USSetPlaybackRateEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Sequence\USSkipSequenceEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Sequence\USStopAndSkipToTimeSequenceEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Sequence\USStopSequenceEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Signal\USSendMessageBoolEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Signal\USSendMessageEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Signal\USSendMessageFloatEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Signal\USSendMessageIntEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Signal\USSendMessageStringEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Spawn\USSpawnPrefabEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Time\USTimeScaleEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Transform\USLookAtObjectEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Transform\USMatchObjectEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Transform\USParentAndResetObjectEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Transform\USRotateObjectEvent.cs" />
+     <Compile Include="Assets\WellFired\uSequencer\Sequencer Events\Transform\USWarpToObject.cs" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\GlowAdditive.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Matrix\Additive.shader" />
+     <None Include="Assets\Realistic Effects Pack\Readme.txt" />
+     <None Include="Assets\WellFired\shared\Uncompiled\Resources\Transitions\WellFiredWipeLeft.shader" />
+     <None Include="Assets\knight_promo_set\readme.txt" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullBack.shader" />
+     <None Include="Assets\WellFired\shared\Uncompiled\Resources\Transitions\WellFiredDissolve.shader" />
+     <None Include="Assets\ManyWorlds\Necromancer\necromancer.txt" />
+     <None Include="Assets\WellFired\shared\Uncompiled\Resources\Transitions\WellFiredWipeDown.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Particles.shader" />
+     <None Include="Assets\ManyWorlds\Material Library\Custom Shaders\DisplaceBumpedSpecularRefRimDX11.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\IceShaderDistortion.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Water.shader" />
+     <None Include="Assets\Realistic Effects Pack\Readme 1.txt" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\Distortion.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\DistortionParticlesCutout.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\DiffuseRimSpecular.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\DistortionCullBack+1.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Matrix\GlowAdditive.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Rim.shader" />
+     <None Include="Assets\WellFired\shared\Uncompiled\Resources\Transitions\WellFiredWipeUp.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCutOut.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\GlowAdditiveTwoColor.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Explosion.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\Free\FreeDistortionCullOff.shader" />
+     <None Include="Assets\WellFired\uSequencer\Example Scenes\05 Animation Examples\Art\Hellephant\Shaders\Rim Lit Bumped Specular.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\DiffuseRim.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\DistortionCullOff.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\GlowAdditiveRGB.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\MultiplyDouble.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\DistortionParticles.shader" />
+     <None Include="Assets\ManyWorlds\Necromancer\DemoScene\Physics test\BeastSettings.xml" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Explosion2.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\DistortionCutOutBack.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Ice.shader" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Matrix\GlowAdditiveSimple.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Distortion\DistortionCutOut.shader" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BrightPassFilter.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\IceShaderFastSimple.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\Dissolve.shader" />
+     <None Include="Assets\WellFired\shared\Uncompiled\Resources\Transitions\WellFiredWipeRight.shader" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\Blend.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\GlowAdditiveSimple.shader" />
+     <None Include="Assets\Realistic Effects Pack\Shaders\WaterFree.shader" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
+     <None Include="Assets\ManyWorlds\Material Library\Custom Shaders\BumpedSpecular2sided.shader" />
+     <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\BlendForBloom.shader" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="SharedRuntime">
+ <HintPath>C:/Users/dnelson/Desktop/New Unity Project/PersonalProject/Assets/WellFired/shared/Compiled/Runtime/SharedRuntime.dll</HintPath>
+ </Reference>
+ <Reference Include="uSequencerRuntime">
+ <HintPath>C:/Users/dnelson/Desktop/New Unity Project/PersonalProject/Assets/WellFired/uSequencer/Sequencer/uSequencerRuntime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{7827D52F-ACD4-473C-0603-AD0408FF24CF}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{D8076D3B-E615-164B-4C1E-E3B4ED7CF421}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
