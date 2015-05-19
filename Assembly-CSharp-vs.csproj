@@ -46,8 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Assets\Members\Dre\AnimControl.cs" />
      <Compile Include="Assets\Assets\Members\Dre\CameraTargetingSystem.cs" />
+     <Compile Include="Assets\Assets\Members\Dre\EnemyMoveFSM.cs" />
      <Compile Include="Assets\Assets\Members\Dre\MovementTest.cs" />
+     <Compile Include="Assets\Assets\Members\Dre\NewInputManager.cs" />
      <Compile Include="Assets\Realistic Effects Pack\Scripts\Demo\MyGui.cs" />
      <Compile Include="Assets\Realistic Effects Pack\Scripts\Demo\MyGuiV2.cs" />
      <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Balls\AddMaterialOnHit.cs" />

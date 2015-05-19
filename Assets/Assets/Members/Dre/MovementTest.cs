@@ -30,9 +30,13 @@ public class MovementTest: MonoBehaviour {
 
 	private bool inCombat = false;
 	private int inCombat2 = 0;
+	
+	public EnemyMoveFSM moveFSM;
+
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody> ();
+		moveFSM = GetComponent<EnemyMoveFSM> ();
 	}
 	
 	// Update is called once per frame
@@ -56,15 +60,16 @@ public class MovementTest: MonoBehaviour {
 		{
 			transform.localPosition += movementSpeed*transform.right*Time.deltaTime;
 		}*/
-		/*if(Input.GetButtonDown("Jump") && inCombat)
+		if(Input.GetButtonDown("Jump") && inCombat)
 		{
+			moveFSM.CurrentState = enemyMoveStates.jump;
 			if(!inAir)
 			{ 
 				inAir = true;
 				rb.AddForce(jumpSpeed*Vector3.up);
 				rb.AddForce(jumpSpeed*-Vector3.forward);
 			}		
-		}*/
+		}
 
 //**********************************
 //LONG RANGE
@@ -72,21 +77,26 @@ public class MovementTest: MonoBehaviour {
 		if(Input.GetAxis("Horizontal") > 0 && !inAir && !doubleJump)
 		{
 			transform.localPosition += movementSpeed*transform.right*Time.deltaTime;
+			moveFSM.CurrentState = enemyMoveStates.enemyWalkBack;
 		}
 		if(Input.GetAxis("Horizontal") < 0 && !inAir && !doubleJump)
 		{
 			transform.localPosition -= movementSpeed*transform.right*Time.deltaTime;
+			moveFSM.CurrentState = enemyMoveStates.enemyWalkBack;
 		}
 		if(Input.GetAxis("Vertical") > 0 && !inAir && !doubleJump)
 		{			
 			transform.localPosition += movementSpeed*transform.forward*Time.deltaTime;
+			moveFSM.CurrentState = enemyMoveStates.enemyRun;
 		}
 		if(Input.GetAxis("Vertical") < 0 && !inAir && !doubleJump)
 		{
 			transform.localPosition -= movementSpeed*transform.forward*Time.deltaTime;
+			moveFSM.CurrentState = enemyMoveStates.enemyWalkBack;
 		}
 		if(Input.GetButtonDown("Jump") && !inCombat)
 		{
+			moveFSM.CurrentState = enemyMoveStates.jump;
 			if(!inAir)
 			{ 
 				inAir = true;
@@ -112,6 +122,11 @@ public class MovementTest: MonoBehaviour {
 			cam.transform.position = Vector3.SmoothDamp(cam.transform.position,campos[1].position, ref velocity, .5f);
 			break;
 		}
+
+		if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0 && !inAir){
+			moveFSM.CurrentState = enemyMoveStates.enemyIdle;
+		}
+
 	}
 	void OnTriggerEnter(Collider col){
 		switch(col.gameObject.tag)
