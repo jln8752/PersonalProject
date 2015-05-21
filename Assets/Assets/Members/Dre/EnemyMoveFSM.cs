@@ -1,41 +1,46 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public enum enemyMoveStates
+public enum MoveStates
 {
-	enemyIdle,
-	enemyRun,
-	enemyWalkBack,
-	enemyAttack1,
-	enemyAttack2,
-	enemyAttack3,
-	enemyAttack4,
-	enemyAttack5,
-	enemySpellCast,
-	enemyDeath,
-	enemyDamage,
+	Idle,
+	Run,
+	WalkBack,
+	Attack1,
+	Attack2,
+	Attack3,
+	Attack4,
+	Attack5,
+	SpellCast,
+	Death,
+	Damage,
 	jump
 }
 
 public class EnemyMoveFSM : MonoBehaviour 
 {
-	public AnimationClip enemyIdle;
-	public AnimationClip enemyRun;
-	public AnimationClip enemyWalkBack;
-	public AnimationClip enemyAttack1;
-	public AnimationClip enemyAttack2;
-	public AnimationClip enemyAttack3;
-	public AnimationClip enemyAttack4;
-	public AnimationClip enemyAttack5;
-	public AnimationClip enemyDeath;
-	public AnimationClip enemyDamage;
+	public AnimationClip Idle;
+	public AnimationClip Run;
+	public AnimationClip WalkBack;
+	public AnimationClip RunL;
+	public AnimationClip RunR;
+	public AnimationClip Attack1;
+	public AnimationClip Attack2;
+	public AnimationClip Attack3;
+	public AnimationClip Attack4;
+	public AnimationClip Attack5;
+	public AnimationClip Death;
+	public AnimationClip Damage;
 	public AnimationClip jump_up;
 	public AnimationClip jump_down;
 
 
-	public enemyMoveStates CurrentState;
-	
-	//public enemyMoveStates PreviousState;
+	public MoveStates CurrentState;
+
+	public int combo;
+
+	//public MoveStates PreviousState;
 	
 	//public float MoveSpeed;
 	
@@ -43,45 +48,61 @@ public class EnemyMoveFSM : MonoBehaviour
 	
 	//string currentAnimation;
 	
-	Animation animation;
+	public Animation anim;
 	
 	void Awake()
 	{
 		//DontDestroyOnLoad (this);
 
-		animation = gameObject.GetComponent<Animation>();
+		anim = gameObject.GetComponent<Animation>();
 		
 		#region setting up animator
-		animation.playAutomatically = true;
+		anim.playAutomatically = true;
 
 		
-		animation.AddClip(enemyIdle, "idle");
-		animation.AddClip(enemyRun, "run");
-		animation.AddClip(enemyWalkBack, "walk_back");
-		animation.AddClip(enemyAttack1, "atk01");
-		animation.AddClip(enemyAttack1, "atk02");
-		animation.AddClip(enemyAttack1, "atk03");
-		animation.AddClip(enemyAttack1, "atk04");
-		animation.AddClip(enemyAttack1, "atk05");
-		animation.AddClip(enemyDeath, "die");
-		animation.AddClip(enemyDamage, "hurt");
-		animation.AddClip(jump_up, "jump_up");
-		animation.AddClip(jump_down, "jump_down");
+		anim.AddClip(Idle, "idle");
+		anim.AddClip(Run, "run");
+		anim.AddClip(WalkBack, "walk_back");
+		anim.AddClip(RunL,"runL");
+		anim.AddClip(RunR,"runR");
+		anim.AddClip(Attack1, "atk01");
+		anim.AddClip(Attack2, "atk02");
+		anim.AddClip(Attack3, "atk03");
+		anim.AddClip(Attack4, "atk04");
+		anim.AddClip(Attack5, "atk05");
+		anim.AddClip(Death, "die");
+		anim.AddClip(Damage, "hurt");
+		anim.AddClip(jump_up, "jump_up");
+		anim.AddClip(jump_down, "jump_down");
 		
-		animation["run"].wrapMode = WrapMode.Loop;
-		animation["idle"].wrapMode = WrapMode.Loop;
-		animation["walk_back"].wrapMode = WrapMode.Loop;
-		animation["atk01"].wrapMode = WrapMode.Once;
-		animation["atk02"].wrapMode = WrapMode.Once;
-		animation["atk03"].wrapMode = WrapMode.Once;
-		animation["atk04"].wrapMode = WrapMode.Once;
-		animation["atk05"].wrapMode = WrapMode.Once;
-		animation["hurt"].wrapMode = WrapMode.Once;
-		animation["die"].wrapMode = WrapMode.Once;
-		animation["jump_up"].wrapMode = WrapMode.Once;
-		animation["jump_down"].wrapMode = WrapMode.Once;
+		anim["run"].wrapMode = WrapMode.Once;
+		anim["idle"].wrapMode = WrapMode.Once;
+		anim["walk_back"].wrapMode = WrapMode.Once;
+		anim["runL"].wrapMode = WrapMode.Once;
+		anim["runR"].wrapMode = WrapMode.Once;
+		anim["atk01"].wrapMode = WrapMode.Once;
+		anim["atk02"].wrapMode = WrapMode.Once;
+		anim["atk03"].wrapMode = WrapMode.Once;
+		anim["atk04"].wrapMode = WrapMode.Once;
+		anim["atk05"].wrapMode = WrapMode.Once;
+		anim["hurt"].wrapMode = WrapMode.Once;
+		anim["die"].wrapMode = WrapMode.Once;
+		anim["jump_up"].wrapMode = WrapMode.Once;
+		anim["jump_down"].wrapMode = WrapMode.Once;
 		//currentAnimation = "idle";
 		
+		/*anim["run"].speed = .5f;
+		anim["idle"].speed = .5f;
+		anim["walk_back"].speed = .5f;
+		anim["atk01"].speed = .5f;
+		anim["atk02"].speed = .5f;
+		anim["atk03"].speed = .5f;
+		anim["atk04"].speed = .5f;
+		anim["atk05"].speed = .5f;
+		anim["hurt"].speed = .5f;
+		anim["die"].speed = .5f;
+		anim["jump_up"].speed = .5f;
+		anim["jump_down"].speed = .5f;*/
 		#endregion
 
 
@@ -89,7 +110,7 @@ public class EnemyMoveFSM : MonoBehaviour
 	
 	void Start () 
 	{
-		CurrentState = enemyMoveStates.enemyIdle;
+		CurrentState = MoveStates.Idle;
 		//MoveSpeed = 1.0f;
 		
 	}
@@ -97,73 +118,78 @@ public class EnemyMoveFSM : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		
-		switch (CurrentState)
-		{
 
-		case enemyMoveStates.enemyIdle:
-			animation.Play("idle", PlayMode.StopAll);
-
+	}
+	public void Attack(){		
+		combo++;
+		switch (combo) {
+		case 1:
+			anim.CrossFade("atk01");
 			break;
-			
-		case enemyMoveStates.enemyRun:
-			animation.CrossFade("run", 0.1f);
-			
-			break; 
-
-		case enemyMoveStates.enemyWalkBack:
-			animation.CrossFade("walk_back", 0.1f);
-
+		case 2:
+			anim.CrossFadeQueued("atk03");
 			break;
-
-		case enemyMoveStates.enemyAttack1:
-			animation.CrossFade("atk01", 0.1f);
-
-			break;
-
-		case enemyMoveStates.enemyAttack2:
-			animation.CrossFade("atk02", 0.1f);
-
-			break;
-
-		case enemyMoveStates.enemyAttack3:
-			animation.CrossFade("atk03", 0.1f);
-
-			break;
-
-		case enemyMoveStates.enemyAttack4:
-			animation.CrossFade("atk04", 0.1f);
-
-			break;
-
-		case enemyMoveStates.enemyAttack5:
-			animation.CrossFade("atk05", 0.1f);
-
-			break;
-		
-		case enemyMoveStates.enemyDamage:
-			animation.CrossFade("hurt", 0.1f);
-
-			break;
-
-		case enemyMoveStates.enemyDeath:
-			animation.CrossFade("die", 0.1f);
-
-			break;
-
-		case enemyMoveStates.jump:
-			if (gameObject.GetComponent<Rigidbody>().velocity.y > 0)
-				animation.CrossFade("jump_up",0.1f);
-			if (gameObject.GetComponent<Rigidbody>().velocity.y < 0)
-				animation.CrossFade("jump_down",0.1f);
-
+		case 3:
+			anim.CrossFadeQueued("atk04");
 			break;
 		default:
-			
 			break;
+		}
+		/*switch (CurrentState) {
+		case MoveStates.Attack1:
+			anim.PlayQueued("atk03");
 			
+			//CurrentState = MoveStates.Attack2;
+			break;
+		case MoveStates.Attack2:
+			anim.CrossFadeQueued("atk02", 0.0f);
+			CurrentState = MoveStates.Attack3;
+			break;
+		case MoveStates.Attack3:
+			CurrentState = MoveStates.Attack4;
+			break;
+		case MoveStates.Attack4:
+			CurrentState = MoveStates.Attack5;
+			break;
+		default:
+			CurrentState = MoveStates.Attack1;
+			break;
+		}*/
+	}
+	public void run(){		
+		combo = 0;
+		anim.CrossFade("run", 0.0f);
+	}
+	public void idle(){		
+		combo = 0;
+		anim.CrossFade("idle",0.0f);
+	}
+	public void runL(){
+		combo = 0;
+		if(!anim.IsPlaying("run") && !anim.IsPlaying("walk_back"))
+			anim.CrossFade("runL",0.0f);
+	}
+	public void runR(){
+		combo = 0;
+		if(!anim.IsPlaying("run") && !anim.IsPlaying("walk_back"))
+			anim.CrossFade("runR",0.0f);
+	}
+	public void walkBack(){
+		combo = 0;
+		anim.CrossFade("walk_back",0.0f);
+	}
+	public void Jump(){
+		if (gameObject.GetComponent<Rigidbody> ().velocity.y > 0) 
+		{
+			if(!anim.IsPlaying("jump_up"))
+				anim.CrossFade ("jump_up", 0.0f);
+		}
+		else if (gameObject.GetComponent<Rigidbody>().velocity.y < 0)
+		{
+			if(anim.IsPlaying("jump_up")){
+				anim.CrossFade("jump_down",0.0f);
+				//anim.CrossFadeQueued("idle",0.0f);
+			}
 		}
 	}
-	
-
 }

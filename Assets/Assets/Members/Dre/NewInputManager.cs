@@ -37,8 +37,8 @@ public class NewInputManager : MonoBehaviour {
 
 
 		if (forceIdle) {
-			if(moveFSM.CurrentState != enemyMoveStates.enemyIdle)
-				moveFSM.CurrentState = enemyMoveStates.enemyIdle;
+			//if(moveFSM.CurrentState != enemyMoveStates.enemyIdle)
+			//	moveFSM.CurrentState = enemyMoveStates.enemyIdle;
 			return;
 		}
 
@@ -141,30 +141,33 @@ public class NewInputManager : MonoBehaviour {
 		}*/
 		if (Input.GetAxis("Mouse X") < 0) {
 			Turn (-1);
-			moveFSM.CurrentState = enemyMoveStates.enemyIdle;
+			//moveFSM.CurrentState = enemyMoveStates.enemyIdle;
 		}		
 		if (Input.GetAxis("Mouse X") > 0) {
 			Turn (1);
-			moveFSM.CurrentState = enemyMoveStates.enemyIdle;
+			//moveFSM.CurrentState = enemyMoveStates.enemyIdle;
 		}
 		if (Input.GetAxis("Vertical") <  0) {
 			transform.position += moveSpeed * Time.deltaTime * transform.forward;
-			moveFSM.CurrentState = enemyMoveStates.enemyWalkBack;
+			//moveFSM.CurrentState = enemyMoveStates.enemyWalkBack;
 			//moveFSM.CurrentState = enemyMoveStates.enemyRun;
 		}
 
 		if (Input.GetAxis("Vertical") > 0) {
 			transform.position -=  moveSpeed* Time.deltaTime * transform.forward;
-			moveFSM.CurrentState = enemyMoveStates.enemyRun;
+			//moveFSM.CurrentState = enemyMoveStates.enemyRun;
 		}
 
 
 
 		if(Input.GetAxis("Vertical") == 0 ){
-			moveFSM.CurrentState = enemyMoveStates.enemyIdle;
+			//moveFSM.CurrentState = enemyMoveStates.enemyIdle;
 		}
 
 
+		if (Input.GetButtonDown ("Fire1")) {
+			moveFSM.Attack();
+		}
 		/*if (Input.GetButtonDown ("Fire1") && !isAttacking) 
 		{
 			isAttacking = true;

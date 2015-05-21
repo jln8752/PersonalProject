@@ -8,6 +8,7 @@ public class MovementTest: MonoBehaviour {
 	//private bool ypressed = false;
 	[SerializeField]private bool inAir = false;
 	[SerializeField]private bool doubleJump = false;
+	[SerializeField]private bool isAttacking = false;
 	public enum CameraPositoins
 	{
 		backRight,
@@ -37,6 +38,7 @@ public class MovementTest: MonoBehaviour {
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody> ();
 		moveFSM = GetComponent<EnemyMoveFSM> ();
+		cam.GetComponent<CameraTargetingSystem> ().Target = Target;
 	}
 	
 	// Update is called once per frame
@@ -59,10 +61,10 @@ public class MovementTest: MonoBehaviour {
 		if(Input.GetAxis("Vertical") < 0 && !inAir && !doubleJump && inCombat)
 		{
 			transform.localPosition += movementSpeed*transform.right*Time.deltaTime;
-		}*/
-		if(Input.GetButtonDown("Jump") && inCombat)
+		}
+		if(Input.GetButtonDown("Jump") && isAttacking)
 		{
-			moveFSM.CurrentState = enemyMoveStates.jump;
+			//moveFSM.CurrentState = MoveStates.jump;
 			if(!inAir)
 			{ 
 				inAir = true;
@@ -70,33 +72,34 @@ public class MovementTest: MonoBehaviour {
 				rb.AddForce(jumpSpeed*-Vector3.forward);
 			}		
 		}
-
+		*/
 //**********************************
 //LONG RANGE
 //**********************************
-		if(Input.GetAxis("Horizontal") > 0 && !inAir && !doubleJump)
-		{
-			transform.localPosition += movementSpeed*transform.right*Time.deltaTime;
-			moveFSM.CurrentState = enemyMoveStates.enemyWalkBack;
+		if (Input.GetAxis ("Horizontal") > 0 && !inAir && !doubleJump && !isAttacking) {
+			transform.localPosition += movementSpeed * transform.right * Time.deltaTime;
+			//moveFSM.CurrentState = MoveStates.enemyWalkBack;
+			moveFSM.runR ();
 		}
-		if(Input.GetAxis("Horizontal") < 0 && !inAir && !doubleJump)
-		{
-			transform.localPosition -= movementSpeed*transform.right*Time.deltaTime;
-			moveFSM.CurrentState = enemyMoveStates.enemyWalkBack;
+		if (Input.GetAxis ("Horizontal") < 0 && !inAir && !doubleJump && !isAttacking) {
+			transform.localPosition -= movementSpeed * transform.right * Time.deltaTime;
+			//moveFSM.CurrentState = MoveStates.enemyWalkBack;
+			moveFSM.runL ();
 		}
-		if(Input.GetAxis("Vertical") > 0 && !inAir && !doubleJump)
-		{			
-			transform.localPosition += movementSpeed*transform.forward*Time.deltaTime;
-			moveFSM.CurrentState = enemyMoveStates.enemyRun;
+		if (Input.GetAxis ("Vertical") > 0 && !inAir && !doubleJump && !isAttacking) {			
+			transform.localPosition += movementSpeed * transform.forward * Time.deltaTime;
+			//moveFSM.CurrentState = MoveStates.enemyRun;
+			moveFSM.run ();
 		}
-		if(Input.GetAxis("Vertical") < 0 && !inAir && !doubleJump)
-		{
-			transform.localPosition -= movementSpeed*transform.forward*Time.deltaTime;
-			moveFSM.CurrentState = enemyMoveStates.enemyWalkBack;
+		if (Input.GetAxis ("Vertical") < 0 && !inAir && !doubleJump && !isAttacking) {
+			transform.localPosition -= movementSpeed * transform.forward * Time.deltaTime;
+			//moveFSM.CurrentState = MoveStates.enemyWalkBack;
+			moveFSM.walkBack ();
 		}
-		if(Input.GetButtonDown("Jump") && !inCombat)
+		/*
+		 if(Input.GetButtonDown("Jump")  && !isAttacking)
 		{
-			moveFSM.CurrentState = enemyMoveStates.jump;
+			//moveFSM.CurrentState = MoveStates.jump;
 			if(!inAir)
 			{ 
 				inAir = true;
@@ -104,18 +107,24 @@ public class MovementTest: MonoBehaviour {
 			}		
 			else if(!doubleJump)
 			{
-				doubleJump = true;
-				rb.AddForce(jumpSpeed*Vector3.up*2/3);
+				//doubleJump = true;
+				//rb.AddForce(jumpSpeed*Vector3.up*2/3);
 			}			 	
 			if(Input.GetAxis("Horizontal") > 0) rb.AddForce(jumpSpeed*transform.right* .5f);
 			if(Input.GetAxis("Horizontal") < 0) rb.AddForce(jumpSpeed*transform.right*-.5f);
 			if(Input.GetAxis("Vertical") > 0) rb.AddForce(jumpSpeed*transform.forward* .5f);
 			if(Input.GetAxis("Vertical") < 0) rb.AddForce(jumpSpeed*transform.forward*-.5f);
 		}
-		transform.LookAt (new Vector3(Target.transform.position.x, transform.position.y, Target.transform.position.z));
+		*/
+		transform.LookAt (new Vector3 (Target.transform.position.x, transform.position.y, Target.transform.position.z));
+////////////////////////////////////////////
+		/// Move Camera When Close To Enemy;
+
+
+		/*
 		switch (currentCamPositon)
 		{
-		case CameraPositoins.backRight:
+			case CameraPositoins.backRight:
 			cam.transform.position = Vector3.SmoothDamp(cam.transform.position,campos[0].position, ref velocity, .5f);
 			break;
 		case CameraPositoins.sideRight:
@@ -123,18 +132,41 @@ public class MovementTest: MonoBehaviour {
 			break;
 		}
 
-		if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0 && !inAir){
-			moveFSM.CurrentState = enemyMoveStates.enemyIdle;
+*/
+		
+		
+		if (Input.GetButtonDown ("Fire1") && !inAir && inCombat) {
+			rb.AddForce(20*transform.forward);
+			moveFSM.Attack();
 		}
-
+		
+		if (!moveFSM.GetComponent<Animation>().IsPlaying ("atk01") && !moveFSM.GetComponent<Animation>().IsPlaying ("atk03") && !moveFSM.GetComponent<Animation>().IsPlaying ("atk04")) {
+			isAttacking = false;
+		} else {
+			isAttacking = true;
+		}
 	}
-	void OnTriggerEnter(Collider col){
+
+	void LateUpdate(){
+		if(inAir) moveFSM.Jump();
+		if(Input.GetAxis("Vertical") == 0 && Input.GetAxis("Horizontal") == 0 && !inAir  && !isAttacking){
+			//moveFSM.CurrentState = enemyMoveStates.enemyIdle;
+			moveFSM.idle();
+		}
+	}
+
+	void OnCollisionEnter(Collision col){
 		switch(col.gameObject.tag)
 		{
 		case "Floor":
 			inAir = false;
 			doubleJump = false;
 			break;
+		}
+	}
+
+	void OnTriggerEnter(Collider col){
+		switch (col.gameObject.tag) {			
 		case "Player":
 			currentCamPositon = CameraPositoins.sideRight;
 			if(!inCombat)
