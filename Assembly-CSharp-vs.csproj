@@ -51,7 +51,6 @@
      <Compile Include="Assets\Assets\Members\Dre\EnemyMoveFSM.cs" />
      <Compile Include="Assets\Assets\Members\Dre\MovementTest.cs" />
      <Compile Include="Assets\Assets\Members\Dre\NewInputManager.cs" />
-     <Compile Include="Assets\Assets\Members\Dre\bipfixer.cs" />
      <Compile Include="Assets\Realistic Effects Pack\Scripts\Demo\MyGui.cs" />
      <Compile Include="Assets\Realistic Effects Pack\Scripts\Demo\MyGuiV2.cs" />
      <Compile Include="Assets\Realistic Effects Pack\Scripts\Prefabs\Balls\AddMaterialOnHit.cs" />

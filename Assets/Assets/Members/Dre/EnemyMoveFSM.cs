@@ -91,18 +91,20 @@ public class EnemyMoveFSM : MonoBehaviour
 		anim["jump_down"].wrapMode = WrapMode.Once;
 		//currentAnimation = "idle";
 		
-		/*anim["run"].speed = .5f;
-		anim["idle"].speed = .5f;
-		anim["walk_back"].speed = .5f;
-		anim["atk01"].speed = .5f;
-		anim["atk02"].speed = .5f;
-		anim["atk03"].speed = .5f;
-		anim["atk04"].speed = .5f;
-		anim["atk05"].speed = .5f;
-		anim["hurt"].speed = .5f;
-		anim["die"].speed = .5f;
-		anim["jump_up"].speed = .5f;
-		anim["jump_down"].speed = .5f;*/
+		anim["run"].speed = 1.5f;
+		anim["idle"].speed = 1f;
+		anim["walk_back"].speed = 1.5f;
+		anim["runL"].speed = 1.5f;
+		anim["runR"].speed = 1.5f;
+		anim["atk01"].speed = 1f;
+		anim["atk02"].speed = 1f;
+		anim["atk03"].speed = 1f;
+		anim["atk04"].speed = 1f;
+		anim["atk05"].speed = 1f;
+		anim["hurt"].speed = 1f;
+		anim["die"].speed = 1f;
+		anim["jump_up"].speed = 1f;
+		anim["jump_down"].speed = 1f;
 		#endregion
 
 
