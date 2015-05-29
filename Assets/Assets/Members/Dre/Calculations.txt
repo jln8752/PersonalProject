@@ -1,0 +1,126 @@
+3min - 10 min
+180sec - 600sec
+
+
+100 or 1000 health
+
+110 max for all stats
+	the rate at which stats increase slow down the closer you get, making it hard to get over 100
+	fight times calculated for stats at 100
+
+50 min for all stats
+	 
+
+
+Max DPS: .4 or 4('Low defense' vs 'high attack and high attack speed')
+Min DPS: .2 or 2('High defense' vs 'low attack and low attack speed')
+
+
+low def vs high dps : 	.4
+high def vs high dps:	.3
+low def vs low dps : 	.3
+high def vs low dps :	.2
+
+50 def vs 100 atk and 100 speed : 	.4 dps
+100 def vs 100 atk and 100 speed : 	.3
+50 def vs 50 atk and 50 speed : 	.3
+100 def vs 50 atk and 50 speed : 	.2
+
+
+120 - 400 sec
+
+
+
+
+
+
+
+
+
+Total expected fight time: 3min - 10min(180s - 600s)
+Total expected attack time: 2/3 of total fight time
+
+6000 health
+
+max 45 dps
+min 15 dps
+
+low def vs high dps : 	45 
+high def vs high dps:	30
+low def vs low dps : 	30
+high def vs low dps :	15
+
+110 max for all stats
+	the rate at which stats increase slow down the closer you get, making it hard to get over 100
+	fight times calculated for stats at 100
+
+50 min for all stats
+
+50 def vs 100 atk and 100 speed : 	45
+100 def vs 100 atk and 100 speed : 	30
+50 def vs 50 atk and 50 speed : 	30
+100 def vs 50 atk and 50 speed : 	15
+
+(Atk+Speed/2) - def=
+50 : 	45
+0 : 	30
+-50 : 	15
+
+30 + 15((Atk+Speed/2) - def)/50)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Total expected fight time: 3min - 10min(180s - 600s)
+Total expected attack time: 1/3 of total fight time(60s - 200s)
+
+6000 health
+
+max 45 dps
+min 15 dps
+
+low def vs high dps : 	100 
+high def vs high dps:	65
+low def vs low dps : 	65
+high def vs low dps :	30
+
+110 max for all stats
+	the rate at which stats increase slow down the closer you get, making it hard to get over 100
+	fight times calculated for stats at 100
+
+50 min for all stats
+
+50 def vs 100 atk and 100 speed : 	100
+100 def vs 100 atk and 100 speed : 	65
+50 def vs 50 atk and 50 speed : 	65
+100 def vs 50 atk and 50 speed : 	30
+
+(Atk+Speed/2) - def=
+50 : 	100
+0 : 	65
+-50 : 	30
+
+65 + 35((Atk+Speed/2) - def)/50)
+
+
+
+
+
+
+
+
+
+
